@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpny38n3dlako"]
+
+[ext_resource type="PackedScene" uid="uid://cqhwco06mr674" path="res://scenes/we_test.tscn" id="1_tc42q"]
+[ext_resource type="PackedScene" uid="uid://bw5uq4b0p1m2i" path="res://controllers/character.tscn" id="2_4y55v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vw06q"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6xmn"]
+size = Vector3(19.9527, 0.0749512, 19.989)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WeTest" parent="." instance=ExtResource("1_tc42q")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_vw06q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310974, 0.00402832, -0.0112152)
+shape = SubResource("BoxShape3D_r6xmn")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_4y55v")]
